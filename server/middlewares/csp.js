@@ -23,6 +23,7 @@ export default function csp() {
         "'unsafe-inline'",
         '*.google-analytics.com',
         '*.gstatic.com',
+        'https://*.optimizely.com',
         'https://*.cloudflare.com',
         '*.cloudflare.com',
         'https://*.gitter.im',
