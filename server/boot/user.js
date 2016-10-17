@@ -158,6 +158,8 @@ module.exports = function(app) {
   router.get('/logout', function(req, res) {
     res.redirect(301, '/signout');
   });
+
+  router.get('/config-user.js', jsConfigUser);
   router.get('/signup', getEmailSignup);
   router.get('/signin', getSignin);
   router.get('/signout', signout);
@@ -210,6 +212,11 @@ module.exports = function(app) {
 
   app.use('/:lang', router);
   app.use(api);
+
+  function jsConfigUser(req, res) {
+    res.setHeader('content-type', 'application/javascript');
+    return res.render('account/config-user');
+  }
 
   function getSignin(req, res) {
     if (req.user) {
