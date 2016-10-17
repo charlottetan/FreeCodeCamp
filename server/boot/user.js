@@ -160,6 +160,7 @@ module.exports = function(app) {
   });
 
   router.get('/config-user.js', jsConfigUser);
+  router.get('/account/show-heatmap.js', jsShowHeatmap);
   router.get('/signup', getEmailSignup);
   router.get('/signin', getSignin);
   router.get('/signout', signout);
@@ -216,6 +217,11 @@ module.exports = function(app) {
   function jsConfigUser(req, res) {
     res.setHeader('content-type', 'application/javascript');
     return res.render('account/config-user');
+  }
+
+  function jsShowHeatmap(req, res) {
+    res.setHeader('content-type', 'application/javascript');
+    return res.render('account/show-heatmap');
   }
 
   function getSignin(req, res) {

@@ -2,8 +2,7 @@ extends ../layout
 block content
     include ../partials/flyer
     script(src="/bower_components/cal-heatmap/cal-heatmap.min.js")
-    script.
-        var challengeName = 'Profile View';
+    script(src=rev('/js', 'account/show.js'))
     if (user && user.username === username)
       .row
         if (!user.isGithubCool)
@@ -59,31 +58,8 @@ block content
 
     .spacer
     .col-md-12
-        #cal-heatmap.hidden-xs.hidden-sm.d3-centered
-            script.
-                $(document).ready(function () {
-                    var cal = new CalHeatMap();
-                    var calendar = !{JSON.stringify(calender)};
-                    cal.init({
-                        itemSelector: "#cal-heatmap",
-                        domain: "month",
-                        subDomain: "x_day",
-                        domainGutter: 10,
-                        data: calendar,
-                        cellSize: 15,
-                        align: 'center',
-                        cellRadius: 3,
-                        cellPadding: 2,
-                        tooltip: true,
-                        range: 6,
-                        start: new Date().setDate(new Date().getDate() - 150),
-                        legendColors: ["#cccccc", "#215f1e"],
-                        legend: [1, 2, 3],
-                        label: {
-                            position: "top"
-                        }
-                    });
-                });
+        #cal-heatmap.hidden-xs.hidden-sm.d3-centered(data-calender=calender)
+            script(src=rev('', 'account/show-heatmap.js'))
         .row
             .hidden-xs.col-sm-12.text-center
                 .row.text-primary
