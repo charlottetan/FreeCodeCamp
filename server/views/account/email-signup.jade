@@ -1,7 +1,6 @@
 extends ../layout
 block content
-    script.
-      var challengeName = 'Email Signup'
+    script(src=rev('/js', 'account/email-signup.js'))
     h2.text-center Sign up with an email address here:
     form.form-horizontal(method='POST', action='/api/users', name="signupForm")
         .row
