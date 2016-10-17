@@ -1,1 +1,1 @@
-challengeName = 'Home';
+var challengeName = 'Home';
