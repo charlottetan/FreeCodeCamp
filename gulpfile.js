@@ -230,7 +230,18 @@ gulp.task('dev-server', syncDepenedents, function() {
         stats: 'errors-only'
       }),
       webpackHotMiddleware(bundler)
-    ]
+    ],
+    snippetOptions: {
+      rule: {
+        fn: function (snippet, match) {
+          // strip out the rest of the snippet to
+          // avoid having to add 'unsafe-inline' to
+          // content security policy scriptSrc
+          var regex = /.*\n.*write\("(.*)\\(\/.*>).*\n.*\S/g;
+          return snippet.replace(regex, '$1$2') + match;
+        }
+      }
+    }
   });
 });
 
